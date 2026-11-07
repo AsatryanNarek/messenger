@@ -35,3 +35,9 @@ class Like(models.Model):
 
     class Meta:
         unique_together = ('post', 'user')  # Один лайк на пост від користувача
+
+class Profile(models.Model):
+    avatar = models.ImageField(upload_to="avatar_media/", blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
